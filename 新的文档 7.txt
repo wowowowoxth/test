@@ -1,0 +1,45 @@
+﻿#!/bin/bash
+
+# 该脚本的作用是初始化所有的增量表，只需执行一次
+
+MAXWELL_HOME=/opt/module/maxwell
+
+import_data() {
+    $MAXWELL_HOME/bin/maxwell-bootstrap --database lan --table $1 --config $MAXWELL_HOME/config.properties
+}
+
+case $1 in
+"previous_application")
+  import_data previous_application
+  ;;
+"Loan_transaction_information")
+  import_data Loan_transaction_information
+  ;;
+"Borrower_credit_data_support")
+  import_data Borrower_credit_data_support
+  ;;
+"Lending_Personal_Information")
+  import_data Lending_Personal_Information
+  ;;
+"Borrower_social_area_credit_data")
+  import_data Borrower_social_area_credit_data
+  ;;
+"Borrower_property_data")
+  import_data Borrower_property_data
+  ;;
+
+"all")
+  import_data previous_application
+  import_data Loan_transaction_information
+  import_data Borrower_credit_data_support
+  import_data Lending_Personal_Information
+  import_data Borrower_social_area_credit_data
+  import_data Borrower_property_data
+  ;;
+esac
+
+
+
+
+
+

@@ -1,0 +1,88 @@
+﻿{
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "column": [
+			    "SK_ID_CURR",
+			    "TARGET",
+			    "NAME_CONTRACT_TYPE",
+			    "AMT_CREDIT",
+			    "AMT_ANNUITY",
+			    "AMT_GOODS_PRICE",
+			    "DAYS_BIRTH",
+			    "DAYS_EMPLOYED",
+			    "DAYS_REGISTRATION",
+			    "DAYS_ID_PUBLISH",
+			    "WEEKDAY_APPR_PROCESS_START",
+			    "HOUR_APPR_PROCESS_START"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": [
+                                    "jdbc:mysql://xth001:3306/gmall"
+                                ],
+                                "table": [
+                                    "Loan_transaction_information"
+                                ]
+                            }
+                        ],
+                        "password": "000000",
+                        "splitPk": "",
+                        "username": "root"
+                    }
+                },
+                "writer": {
+                    "name": "hdfswriter",
+                    "parameter": {
+                        "column": [
+                            {
+                                "name": "id",
+                                "type": "bigint"
+                            },
+                            {
+                                "name": "activity_name",
+                                "type": "string"
+                            },
+                            {
+                                "name": "activity_type",
+                                "type": "string"
+                            },
+                            {
+                                "name": "activity_desc",
+                                "type": "string"
+                            },
+                            {
+                                "name": "start_time",
+                                "type": "string"
+                            },
+                            {
+			    "name": "end_time",
+                                "type": "string"
+                            },
+                            {
+                                "name": "create_time",
+                                "type": "string"
+                            }
+                        ],
+                        "compress": "gzip",
+                        "defaultFS": "hdfs://xth:8020",
+                        "fieldDelimiter": "\t",
+                        "fileName": "Loan_transaction_information",
+                        "fileType": "text",
+                        "path": "${targetdir}",
+                        "writeMode": "append"
+                    }
+                }
+            }
+        ],
+        "setting": {
+            "speed": {
+                "channel": 1
+            }
+        }
+    }
+}
+

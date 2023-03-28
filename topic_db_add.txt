@@ -1,0 +1,36 @@
+﻿log_level=info
+maxwell.host = xth001
+maxwell.port = 3306
+maxwell.user = root
+maxwell.password = hadoop
+jdbc_options=useSSL=false&serverTimezone=Asia/Shanghai
+producer.bootstrap.servers = xth001:9092,xth002:9092,xth003:9092,xth004:9092,xth005:9092
+producer.topic = topic_db
+producer.key.serializer = org.apache.kafka.common.serialization.StringSerializer
+producer.value.serializer = org.apache.kafka.common.serialization.StringSerializer
+kafka.topic.database.include = loandb
+kafka.topic.table.include = Loan_transaction_information,Lending_Personal_Information,Borrower_credit_data_support,Borrower_property_data,Borrower_social_area_credit_data
+kafka.consumer.group.id = flume
+
+
+
+
+maxwell.host = <MySQL主机名或IP地址>
+maxwell.port = <MySQL端口号>
+maxwell.user = <MySQL用户名>
+maxwell.password = <MySQL密码>
+producer.bootstrap.servers = <Kafka broker的地址和端口>
+producer.topic = <Kafka主题名称>
+producer.key.serializer = org.apache.kafka.common.serialization.StringSerializer
+producer.value.serializer = org.apache.kafka.common.serialization.StringSerializer
+producer.max.request.size = <Kafka生产者最大请求大小>
+producer.buffer.memory = <Kafka生产者缓冲区内存大小>
+producer.batch.size = <Kafka生产者批量发送大小>
+kafka.topic.database.include = <要包含的数据库名>
+kafka.topic.table.include = Loan_transaction_information,Lending_Personal_Information,Borrower_credit_data_support,Borrower_property_data,Borrower_social_area_credit_data
+kafka.consumer.group.id = <Kafka消费者组ID>
+kafka.zookeeper.connect = <ZooKeeper连接字符串>
+kafka.topic.partitions = <Kafka主题分区数>
+kafka.rebalance.max.retries = <Kafka重新平衡的最大重试次数>
+kafka.rebalance.backoff.ms = <Kafka重新平衡的时间间隔>
+kafka.auto.offset.reset = <Kafka消费者重置消费偏移量的策略>
